@@ -3,6 +3,7 @@ Ehsan chowdhury
 Feb 5, 2026
 Lab 5, functions
 """
+import math
 from lab5_function_chowdhury import *
 
 print("\n----- Example 1: user-defined function -----")
