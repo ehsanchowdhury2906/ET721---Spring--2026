@@ -65,3 +65,27 @@ print("\n----- Example 8: update method -----")
 contacts.update({'Annie': '718-888-9999'})
 print(f"{contacts}")
 
+print("\n----- EXERCISE -----")
+
+
+users = ["peterpan@yahoo.com","annie@hotmail.com",
+         "Carl@hotmail.com","martha@gmail.com",
+         "cassie@yahoo.com","Josue@hotmail.com","John@hotmail.com"]
+
+# Dictionary to save the count
+result = {
+    'hotmail': 0,
+    'gmail': 0,
+    'yahoo': 0
+}
+
+# Read through the users list
+for email in users:
+    if 'hotmail' in email:
+        result['hotmail'] = result['hotmail'] + 1
+    if 'gmail' in email:
+        result['gmail'] = result['gmail'] + 1
+    if 'yahoo' in email:
+        result['yahoo'] = result['yahoo'] + 1
+
+print(result)

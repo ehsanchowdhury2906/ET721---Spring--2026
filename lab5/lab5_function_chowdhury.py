@@ -29,3 +29,19 @@ def calculate_distance(x1, y1, x2, y2):
 #function to print the result
 def print_distance(x1, y1, x2, y2, distance):
     print(f"The distance of point ({x1}, {y1}) and ({x2}, {y2}) is {round(distance, 2)}")
+
+# Exercise: Guess a number
+def generate_random_number(minimum, maximum):
+    """Generate and return a random integer between minimum and maximum"""
+    return random.randint(minimum, maximum)
+
+def compare_guess(random_number):
+    """Compare a guess number with the random number and print appropriate message"""
+    GUESS_NUMBER = 5  # The guess number is defined as a constant
+    
+    if random_number < GUESS_NUMBER:
+        print("The number is smaller than the guess number")
+    elif random_number > GUESS_NUMBER:
+        print("The number is bigger than the guess number")
+    else:
+        print("You got it!")

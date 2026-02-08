@@ -26,3 +26,13 @@ y2 = collectnum('y2')
 
 distance = calculate_distance(x1, y1, x2, y2)
 print_distance(x1, y1, x2, y2, distance)
+
+print("\n----- Exercise: Guess a number -----")
+min_num = 1
+max_num = 10
+
+# Generate random number
+random_num = generate_random_number(min_num, max_num)
+
+# Compare guess with random number
+compare_guess(random_num)
