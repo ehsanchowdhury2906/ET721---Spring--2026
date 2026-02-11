@@ -1,58 +1,75 @@
 """
 Ehsan chowdhury
-feb 10, 2026
-Lab 6: objects and classes 
+lab 6, classes, object, and methods
 """
-print("\n ----- Example 1: Create a class -----")
+#import matplotlib.pyplot as plt
+print("\n ---- example 1: classes ----")
+#a class is like a blueprint of something
+#using the class, we can create different instance of an object
+# data attributes (properties) are values that represent an object
+# method are functions of an object
+
+
 class Circle(object):
-    def __init__(self, radius,color):
-        self.radius = radius 
-        self.color = color 
+    def __init__(self, radius, color):
+        self.r = radius
+        self.c = color
 
-    #method 
-    def add_radius(self,r):
-        self.radius += r
-        return self.radius
-    
+    #method to add value to the radius
+    def add_radius(self, plusradius):
+        self.r += plusradius
+        return self.r
+
 class Rectangle(object):
-    def __init__(self, height, width, color ):
-        self.height = height
-        self.width = width 
-        self.color = color 
-
-    # method to calculate the area
-    def area(self):
-        return self.width * self.height
+    def __init__(self, height, width, color):
+        self.h = height
+        self.w = width
+        self.c = color
     
-    # method to claculate 
+    #method to calulate and return the area of the rectangle
+    def area(self):
+        return self.h * self.w
+    
+    # method to calulate the perimeter of the rectangle
     def perimeter(self):
-        return self.height * self.width 
-# creating an instance of the class, which is an object 
-circle1 = Circle(4, "red")
-circle2 = Circle(10, "green")
+        return 2 * self.h + 2 * self.w
+    
+    #method to draw the rectangle
+    """
+    def drawRectangle(self):
+        plt.gca().add_patch(plt.Rectangle((0, 0), self.w, self.h, fc=self.c))
+        plt.axis('scaled')
+        plt.show()
+    """
+    
+# create an instance of an object
+circle1 = Circle(5, "yellow")
+circle2 = Circle(2, "red")
 
-rectangle1 = Rectangle(2,5,"magenta")
-rectangle2 = Rectangle(7,3,"blue")
+rectangle1 = Rectangle(2, 3, "green")
+rectangle2 = Rectangle(5, 4, "blue")
 
-# accessing information in an object 
-print(f"The color of circle2 = {circle2.color}")
-print(f"The width of rectangle1 = {rectangle1.width}")
+# accessing to data in an object
+print(f"color of circle 2 = {circle2.c}")
+print(f"The area of rectangle 1 = {rectangle1.w * rectangle1.h}")
+print(f"The area of rectangle 2 = {rectangle2.w * rectangle2.h}")
 
-# updating data in an object 
-# change circle1 color from 'red' to 'yellow'
-print(f"The color of circle1 before the update = {circle1.color}")
-circle1.color = "yellow"
-print(f"The color of circle1 after the update = {circle1.color}")
+#modify data of an object
+circle2.c = "orange"
+print(f"color of circle 2 after modification = {circle2.c}")
 
-# accessing a method 
-print(f"Radius of circle2 = {circle2.radius}")
-# update the raidus by adding 5
-circle2.add_radius(5)
-print(f"Radius of circle2 after method add_radius = {circle2.radius}")
+print(f"radius of circle 2 = {circle2.r}")
 
-# accessing methods in Rectangle 
-print(f"The area of the rectangle1 with {rectangle1.width} and height {rectangle1.height} is {rectangle1.area()}")
-print(f"The perimeter of rectangle2 = {rectangle2.perimeter()}")
+# call method add_radius in circle 2 and pass 6
+circle2.add_radius(6)
+print(f"radius of circle 2 after method add_radius = {circle2.r}")
+
+#call methods in class rectangle
+print(f"The area of rectangle 1 = {rectangle1.area()}")
+print(f"The perimeter of rectangle 2 = {rectangle2.perimeter()}")
+
+# draw rectangle
+# rectangle2.drawRectangle()
 
 print("\n---------- EXERCISE ----------")
 
