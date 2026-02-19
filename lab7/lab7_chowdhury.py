@@ -69,3 +69,5 @@ print("\n ----- Example 9: creating df with pandas from an excel file -----")
 df = pd.read_excel("lab7/lab7.xlsx")
 print(df)
 print(df.head())
+
+print("\n ----- Exercise -----")
