@@ -1,0 +1,71 @@
+"""
+Ehsan chowdhury
+Feb 19, 2026
+lab 7 working with data
+"""
+print("\n ----- Eaxample 1: read file -----")
+with open("lab7/phrases.txt", "r") as file1:
+    filecontent = file1.read(30)
+    print(filecontent)
+    filecontent = file1.read(5)
+    print(filecontent)
+
+#check if the file is closed
+print(f"Is the file closed? {file1.closed}")
+
+print("\n ----- Eaxample 2: readline file -----")
+with open("lab7/phrases.txt", "r") as file1:
+    filecontent = file1.readline(30)
+    print(filecontent)
+    filecontent = file1.readline(5)
+    print(filecontent)
+
+print("\n ----- Eaxample 3: readlines file -----")
+# readlines make a list of all the lines in the text file. Each line is an item in the list
+with open("lab7/phrases.txt", "r") as file1:
+    filecontent = file1.readlines()
+    print(filecontent)
+    filecontent = file1.readline(5)
+    print(filecontent)
+
+print("\n ----- Eaxample 3: loop through each line in a file -----")
+with open("lab7/phrases.txt", "r") as file1:
+    filecontent = file1.readlines()
+    for eachline in filecontent:
+        print(eachline.strip()) # strip() method removes \n in each line
+
+print("\n ----- Example 5: create file -----")
+#w mode create a file if the file doesn't exist. On the other hand, if the file exists, w mode will overwrite the data in the file
+with open("lab7/chowdhury.txt", "w") as file:
+    file.write("Python basics for data science\n")
+    file.write("Ehsan chowdhury")
+
+print("\n ----- Example 6: append data into an existing file -----")
+# append the date and time into "lastname.txt" file
+from datetime import datetime
+
+with open("lab7/chowdhury.txt", "a") as file:
+    file.write(f"\nLast update: {datetime.now()}")
+
+print("\n ----- Example 7: copy a file -----")
+#copy file "lastname.txt" into a new file
+with open("lab7/chowdhury.txt", "r") as readfile:
+    with open("lab7/newfile.txt", "w") as writefile:
+        for eachline in readfile:
+            writefile.write(eachline)
+
+print("\n ----- Example 8: pandas a file -----")
+import pandas as pd
+
+data ={
+    'Name' : ['Alice', 'Bob', 'Charlie'],
+    'Age' : [25, 30, 35]
+}
+
+df = pd.DataFrame(data)
+print(df)
+
+print("\n ----- Example 9: creating df with pandas from an excel file -----")
+df = pd.read_excel("lab7/lab7.xlsx")
+print(df)
+print(df.head())
