@@ -71,3 +71,29 @@ print(df)
 print(df.head())
 
 print("\n ----- Exercise -----")
+
+def email_read():
+    gmail = 0
+    yahoo = 0
+    hotmail = 0
+    try:
+        with open("lab7/user_email.txt", "r") as file:
+            for line in file:
+                if "@gmail" in line:
+                    gmail += 1
+                elif "@yahoo" in line:
+                    yahoo += 1
+                elif "@hotmail" in line:
+                    hotmail += 1
+        with open("lab7/reportemail.txt", "w") as report:
+            report.write(f"gmail = {gmail}\n")
+            report.write(f"yahoo = {yahoo}\n")
+            report.write(f"hotmail = {hotmail}\n")
+    except FileNotFoundError:
+        print("Error: user_email.txt does not exist.")
+    except Exception as e:
+        print(f"Something went wrong: {e}")
+    
+    return gmail, yahoo, hotmail
+
+email_read()
