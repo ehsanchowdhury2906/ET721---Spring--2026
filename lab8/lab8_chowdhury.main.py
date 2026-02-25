@@ -111,3 +111,58 @@ plt.legend()
 plt.show(block=True)
 
 input("Press enter to close...")
+
+#lab exercise
+
+import requests
+import pandas as pd
+
+url = "https://raw.githubusercontent.com/openfootball/football.json/master/2020-21/en.1.csv"
+file_name = "epl_matches.csv"
+
+print("\nDownloading EPL data...")
+response = requests.get(url)
+if response.status_code == 200:
+    with open(file_name, "wb") as f:
+        f.write(response.content)
+    print("Download complete.")
+else:
+    print("Download failed.")
+
+
+epl = pd.read_csv(file_name)
+print("\nEPL Data Preview:")
+print(epl.head())
+
+
+arsenal_matches = epl[
+    (epl['Team 1'] == 'Arsenal') |
+    (epl['Team 2'] == 'Arsenal')
+]
+print("\nArsenal Matches:")
+print(arsenal_matches.head())
+
+arsenal_home = arsenal_matches[arsenal_matches['Team 1'] == 'Arsenal']
+arsenal_away = arsenal_matches[arsenal_matches['Team 2'] == 'Arsenal']
+
+
+home_avg_goals = arsenal_home['FT'].str.split('-', expand=True)[0].astype(int).mean()
+away_avg_goals = arsenal_away['FT'].str.split('-', expand=True)[1].astype(int).mean()
+
+print(f"\nArsenal home average goals: {home_avg_goals}")
+print(f"Arsenal away average goals: {away_avg_goals}")
+
+import matplotlib.pyplot as plt
+
+metrics = ['Home Goals', 'Away Goals']
+values = [home_avg_goals, away_avg_goals]
+
+plt.figure(figsize=(6, 4))
+plt.bar(metrics, values, color=['skyblue', 'orange'])
+plt.title('Arsenal 2020-21 Average Goals')
+plt.ylabel('Average Goals')
+plt.grid(axis='y', linestyle='--', alpha=0.7)
+plt.tight_layout()
+plt.show()
+
+input("Press enter to close...")
