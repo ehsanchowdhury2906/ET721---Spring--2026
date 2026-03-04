@@ -58,6 +58,6 @@ def test_is_even(n, expected):
         ("peter$pan", True),
         ("pan", False)
     ]
-)
+    )
 def test_validate_password(password, expected): 
     assert validate_password(password) == expected
