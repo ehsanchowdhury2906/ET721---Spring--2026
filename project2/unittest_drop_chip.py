@@ -66,16 +66,7 @@ if __name__ == '__main__':
     unittest.main(verbosity=2)
 
 
-# =============================================================================
-# TEST RESULTS
-# =============================================================================
-#
-# Framework: unittest
-# File: test_connect4_unittest.py
-#
-# Tests run: 10
-# Passed:    10
-# Failed:    0
+
 #
 # TestWinConditions:
 #   test_horizontal_win .............. PASS
@@ -84,12 +75,6 @@ if __name__ == '__main__':
 #   test_diagonal_win_up_right ....... PASS
 #   test_no_win ...................... PASS
 #
-# TestDropChip:
-#   test_successful_drop ............. PASS
-#   test_full_column_returns_false ... PASS
-#   test_invalid_column_too_low ...... PASS
-#   test_invalid_column_too_high ..... PASS
-#   test_full_board .................. PASS
+
 #
 # Bugs/Issues: None. All methods behaved correctly under all test conditions.
-# =============================================================================
