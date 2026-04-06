@@ -25,14 +25,26 @@ def test_calculateAverageQuantity_withFruitsList_returnsCorrectAverage():
     Test the calculation of the average quantity of fruits in an inventory.
     Checks if the average_quantity method computes the correct average.
     """
-    pass
+    fruits = [
+        Fruit(name="Apple", quantity=10),
+        Fruit(name="Banana", quantity=20),
+        Fruit(name="Cherry", quantity=30),
+    ]
+    result = FruitMetrics.average_quantity(fruits)
+    assert result == 20.0
 
 def test_identifyMostCommonFruit_withFruitsList_returnsMostFrequentFruit():
     """
     Test to identify the most common fruit in an inventory.
     Checks if the most_common_fruit method correctly identifies the fruit that appears most frequently.
     """
-    pass
+    fruits = [
+        Fruit(name="Apple", quantity=10),
+        Fruit(name="Apple", quantity=5),
+        Fruit(name="Banana", quantity=20),
+    ]
+    result = FruitMetrics.most_common_fruit(fruits)
+    assert result == "Apple"
 
 def test_createFruit_withValidDetails_createsFruitSuccessfully():
     """
@@ -56,12 +68,13 @@ def test_createFruit_withNegativeQuantity_raisesAssertionError():
     Test the creation of a Fruit instance with an invalid quantity.
     Verifies that an AssertionError is raised when the quantity is negative.
     """
-    pass
+    with pytest.raises(AssertionError):
+        Fruit(name="Apple", quantity=-1)
 
 def test_createFruit_withNonIntegerQuantity_raisesAssertionError():
     """
     Test the creation of a Fruit instance with an invalid quantity type.
     Verifies that an AssertionError is raised when the quantity is not an integer.
     """
-    pass
-
+    with pytest.raises(AssertionError):
+        Fruit(name="Apple", quantity="ten")

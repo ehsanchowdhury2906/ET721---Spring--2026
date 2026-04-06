@@ -45,4 +45,46 @@ def test_searchByName_withExistingFruitName_returnsFruitsWithName(test_app):
         db.session.bulk_save_objects(fruits)
         db.session.commit()
 
-        # Add your test here
+        # Test 1: Search by name
+        results = Fruit.search(name="Apple")
+        assert len(results) == 2
+        assert all(f.name == "Apple" for f in results)
+
+
+def test_searchByVariety_withExistingVariety_returnsFruitsWithVariety(test_app):
+    with test_app.app_context():
+        # Test 2: Search by variety
+        results = Fruit.search(variety="Cavendish")
+        assert len(results) == 1
+        assert results[0].name == "Banana"
+
+
+def test_searchBySeason_withExistingSeason_returnsFruitsInSeason(test_app):
+    with test_app.app_context():
+        # Test 3: Search by season
+        results = Fruit.search(season="Winter")
+        assert len(results) == 2
+        assert all(f.season == "Winter" for f in results)
+
+
+def test_searchByMinQuantity_withValidMinQuantity_returnsFruitsAtOrAboveMin(test_app):
+    with test_app.app_context():
+        # Test 4: Search by min quantity
+        results = Fruit.search(min_quantity=15)
+        assert len(results) == 2
+        assert all(f.quantity >= 15 for f in results)
+
+
+def test_searchByMaxQuantity_withValidMaxQuantity_returnsFruitsAtOrBelowMax(test_app):
+    with test_app.app_context():
+        # Test 5: Search by max quantity
+        results = Fruit.search(max_quantity=10)
+        assert len(results) == 1
+        assert all(f.quantity <= 10 for f in results)
+
+
+def test_search_withNonExistentName_returnsEmptyList(test_app):
+    with test_app.app_context():
+        # Test 6: Search does not return any results
+        results = Fruit.search(name="Durian")
+        assert results == []
