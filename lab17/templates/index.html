@@ -3,24 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Images Uploader App</title>
+    <title>Image Uploader App</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='imguploader_style.css') }}">
 </head>
 <body>
-    <h1 class="title">Upload Image Ehsan chowdhury</h1>
-
-    <form id="uploadForm">
-        <input type="file" name="image" id="imageInput" required>
+    <h1 class="title">Upload image by Gonzalo Guerra</h1>
+    <form id="uploadForm" enctype="multipart/form-data">
+        <input type="file" name="image" id="imageInput" accept="image/*" required>
         <button type="submit" class="btnupload">Upload</button>
     </form>
 
-    <p id="message">Testing</p>
+    <p id="message"></p>
 
     <h2 class="subtitle">Gallery</h2>
     <div class="gallery" id="gallery">
-        <div class="card">
-            <img src="{{ url_for('static', filename='uploads/newyork.jpg') }}" alt="new york image">
-        </div>
+        {% for image in images %}
+            <div class="card" id="image-{{ image.id }}">
+                <img src="/static/uploads/{{ image.filename }}">
+                <button onclick="deleteImage({{ image.id }})" class="btndelete">Delete</button>
+            </div>
+        {% endfor %}
     </div>
 
     <script src="{{ url_for('static', filename='imguploader_script.js') }}"></script>
